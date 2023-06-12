@@ -1,17 +1,17 @@
 {
-  "name": "logo-maker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "fs": "0.0.1-security",
-    "jest": "^24.9.0",
-    "inquirer": "^8.2.4"
+    "name": "logo-maker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "fs": "0.0.1-security",
+      "jest": "^24.9.0",
+      "inquirer": "^8.2.4"
+    }
   }
-}

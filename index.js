@@ -42,27 +42,23 @@ inquirer
   ])
   // takes input and creates svg file with user-provided information
   .then(({ shape, shapeColor, text, textColor, color }) => {
-    const options = {
-      shape: shape,
-      shapeColor: shapeColor,
+
+    let newShape;
+
+    let shapeOptions = {
       text: text,
+      shapeColor: shapeColor,
       textColor: textColor,
       color: color
-    }
+    };
 
-    let newShape = new Shape();
+    newShape = new shape(shapeOptions);
 
-    if (shape === 'Triangle') {
-      newShape = new Triangle(options);
-    } else if (shape === 'Circle') {
-      newShape = new Circle(options);
-    } else if (shape === 'Square') {
-      newShape = new Square(options);
-    }
+    const testShape = new Shape(shapeOptions);
+    console.log(testShape);
+    console.log(newShape);
 
-    const svgContent = newShape.render();
-
-    fs.writeFile('examples/logo.svg', svgContent, err => {
+    fs.writeFile('examples/logo.svg', newShape.render(), err => {
       if (err) {
         console.log(err);
       } else {

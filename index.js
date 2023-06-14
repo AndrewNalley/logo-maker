@@ -3,13 +3,9 @@ const inquirer = require('inquirer')
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 const fs = require('fs')
 
-const { Shape } = require('./lib/shapes.js');
-const { Circle } = require('./lib/shapes.js');
-const { Square } = require('./lib/shapes.js');
-const { Triangle } = require('./lib/shapes.js');
+const { Shape, Circle, Square, Triangle } = require('./lib/shapes.js');
 
 // inquirer prompt
-
 inquirer
   .prompt([
     {
@@ -45,8 +41,33 @@ inquirer
     },
   ])
   // takes input and creates svg file with user-provided information
-  .then(({ shape, shapeColor, text, textColor, color }) => fs.writeFile("/examples/logo.svg",
-    // display logo
-    `const newShape = new shape`, err => err ? console.log(err) : console.log("Generated logo.svg"))
-  );
+  .then(({ shape, shapeColor, text, textColor, color }) => {
+    const options = {
+      shape: shape,
+      shapeColor: shapeColor,
+      text: text,
+      textColor: textColor,
+      color: color
+    }
+
+    let newShape = new Shape();
+
+    if (shape === 'Triangle') {
+      newShape = new Triangle(options);
+    } else if (shape === 'Circle') {
+      newShape = new Circle(options);
+    } else if (shape === 'Square') {
+      newShape = new Square(options);
+    }
+
+    const svgContent = newShape.render();
+
+    fs.writeFile('examples/logo.svg', svgContent, err => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Generated logo.svg');
+      }
+    });
+  });
 // Log error if thrown ^ 

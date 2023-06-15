@@ -20,7 +20,7 @@ inquirer
     },
     {
       type: 'input',
-      message: 'Next, what color do you want for the shape?',
+      message: 'Next, what color do you want for the shape? (you can pick a color name like green, or you can also use hexadecimal notation like #ff0000)',
       name: 'shapeColor',
     },
     {
@@ -31,12 +31,12 @@ inquirer
     },
     {
       type: 'input',
-      message: 'What color do you want for the text?',
+      message: 'What color do you want for the text? (color name or hexadecimal notation)',
       name: 'textColor',
     },
     {
       type: 'input',
-      message: 'Finally, what color do you want for the background?',
+      message: 'Finally, what color do you want for the background? (color name or hexadecimal notation)',
       name: 'color',
     },
   ])
@@ -57,7 +57,7 @@ inquirer
     const testShape = new Shape(shapeOptions);
     console.log(testShape);
     console.log(newShape);
-
+// Write svg file to examples folder
     fs.writeFile('examples/logo.svg', newShape.render(), err => {
       if (err) {
         console.log(err);
